@@ -1,0 +1,58 @@
+<div class="card shadow-sm border-0">
+  <div class="card-header bg-primary text-white">
+    <h5 class="card-title mb-0">{{ 'product-form.title' | translate }}</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label font-weight-bold">{{ 'product-form.fields.name' | translate }}</label>
+        <input #nameInput type="text" class="form-control" id="name" formControlName="name" 
+               [class.is-invalid]="formService.isFieldInvalid('name')">
+        @if (formService.isFieldInvalid('name')) {
+          <div class="invalid-feedback">
+            {{ 'validation.required' | translate }}
+          </div>
+        }
+      </div>
+      <div class="mb-4">
+        <div class="mb-3">
+          <label for="code" class="form-label font-weight-bold">{{ 'product-form.fields.code' | translate }}</label>
+          <input type="text" class="form-control" id="code" formControlName="code" 
+                 [class.is-invalid]="formService.isFieldInvalid('code')"
+                 (blur)="formService.handleCodeBlur()">
+          @if (formService.isFieldInvalid('code')) {
+            <div class="invalid-feedback">
+              {{ (productForm.get('code')?.hasError('codeExists') ? 'product-form.codeReserved' : 'validation.required') | translate }}
+            </div>
+          }
+        </div>
+        <div>
+          <label for="price" class="form-label font-weight-bold">{{ 'product-form.fields.price' | translate }}</label>
+          <div class="input-group">
+             <input type="text" class="form-control" id="price" formControlName="price" 
+                    [class.is-invalid]="formService.isFieldInvalid('price')"
+                    (blur)="formService.handlePriceBlur()">
+          </div>
+          @if (formService.isFieldInvalid('price')) {
+            <div class="text-danger small mt-1">
+              @if (productForm.get('price')?.hasError('required')) {
+                {{ 'validation.required' | translate }}
+              } @else if (productForm.get('price')?.hasError('min')) {
+                {{ 'product-form.priceInvalid' | translate }}
+              }
+            </div>
+          }
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="productForm.invalid || formService.isSubmitting()">
+        @if(formService.isSubmitting()) {
+          <span class="spinner-border spinner-border-sm me-2"></span>
+          {{ 'product-form.submitting' | translate }}
+        } @else {
+          {{ 'product-form.submit' | translate }}
+        }
+      </button>
+    </form>
+  </div>
+</div>

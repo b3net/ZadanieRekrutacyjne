@@ -1,0 +1,35 @@
+# General
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+
+# Angular (mediaexpert)
+mediaexpert/.angular/
+mediaexpert/dist/
+mediaexpert/node_modules/
+mediaexpert/tmp/
+mediaexpert/out-tsc/
+mediaexpert/bazel-out/
+mediaexpert/.sass-cache/
+mediaexpert/connect.lock
+mediaexpert/coverage/
+mediaexpert/libpeerconnection.log
+mediaexpert/testem.log
+mediaexpert/typings/
+npm-debug.log
+yarn-error.log
+
+# .NET (mediaexpert_api)
+mediaexpert_api/bin/
+mediaexpert_api/obj/
+mediaexpert_api/*.user
+mediaexpert_api/*.suo
+mediaexpert_api/*.userosscache
+mediaexpert_api/*.sln.docstates
+mediaexpert_api/*.http

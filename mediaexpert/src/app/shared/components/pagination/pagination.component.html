@@ -1,0 +1,42 @@
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-4">
+  <nav>
+    <ul class="pagination mb-0" [class.opacity-50]="totalCount() < 5">
+      <li class="page-item" [class.disabled]="pageNumber() === 1 || totalCount() < 5">
+        <button class="page-link" [disabled]="pageNumber() === 1 || totalCount() < 5" (click)="pageChange.emit(pageNumber() - 1)">
+          {{ 'pagination.previous' | translate }}
+        </button>
+      </li>
+      
+      @for (pageNum of getVisiblePages(); track $index) {
+        <li class="page-item" 
+            [class.active]="pageNum === pageNumber()" 
+            [class.disabled]="pageNum === null || totalCount() < 5">
+           @if (pageNum === null) {
+             <span class="page-link">...</span>
+           } @else {
+             <button class="page-link" [disabled]="totalCount() < 5" (click)="pageChange.emit(pageNum)">
+               {{ pageNum }}
+             </button>
+           }
+        </li>
+      }
+      
+      <li class="page-item" [class.disabled]="pageNumber() === totalPages() || totalCount() < 5">
+        <button class="page-link" [disabled]="pageNumber() === totalPages() || totalCount() < 5" (click)="pageChange.emit(pageNumber() + 1)">
+          {{ 'pagination.next' | translate }}
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="d-flex align-items-center gap-2">
+    <span class="small text-muted text-nowrap">{{ 'pagination.pageSize' | translate }}:</span>
+    <select class="form-select form-select-sm w-auto" 
+            [value]="pageSize()" 
+            (change)="pageSizeChange.emit(+$any($event.target).value)">
+      @for (option of pageSizeOptions; track option) {
+        <option [value]="option">{{ option }}</option>
+      }
+    </select>
+  </div>
+</div>

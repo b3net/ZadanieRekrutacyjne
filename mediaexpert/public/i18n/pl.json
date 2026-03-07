@@ -1,0 +1,58 @@
+{
+  "app": {
+    "name": "MediaExpert - Zadanie Rekrutacyjne"
+  },
+  "product-list": {
+    "title": "Katalog produktów",
+    "refresh": "Odśwież",
+    "empty": "Brak produktów w katalogu. Dodaj nowy produkt!"
+  },
+  "product-item": {
+    "code": "Kod"
+  },
+  "product-form": {
+    "title": "Dodaj Produkt",
+    "success": "Produkt {{ name }} został pomyślnie dodany!",
+    "error": "Wystąpił błąd podczas dodawania produktu.",
+    "codeReserved": "Podany kod jest już zajęty lub nieprawidłowy.",
+    "priceInvalid": "Cena nie może być mniejsza od zera.",
+    "fields": {
+      "code": "Kod produktu",
+      "name": "Nazwa",
+      "price": "Cena"
+    },
+    "submit": "Dodaj produkt",
+    "submitting": "Zachowywanie..."
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna",
+    "pageSize": "Elementów na stronie"
+  },
+  "error": {
+    "PRODUCT_CODE_EXISTS": {
+      "title": "Błąd kodu produktu",
+      "message": "Podany kod jest już zajęty lub nieprawidłowy."
+    },
+    "INVALID_PRICE": {
+      "title": "Błąd ceny",
+      "message": "Cena nie może być mniejsza od zera."
+    },
+    "GENERAL": {
+      "title": "Błąd",
+      "message": "Wystąpił błąd podczas operacji. Spróbuj ponownie później."
+    },
+    "INTERNAL_SERVER_ERROR": {
+      "title": "Błąd serwera",
+      "message": "Wystąpił wewnętrzny błąd serwera. Spróbuj ponownie później."
+    },
+    "NOT_FOUND": {
+      "title": "Nie znaleziono",
+      "message": "Żądany zasób nie został odnaleziony."
+    }
+  },
+  "validation": {
+    "required": "To pole jest wymagane.",
+    "minPrice": "Cena nie może być mniejsza od zera."
+  }
+}

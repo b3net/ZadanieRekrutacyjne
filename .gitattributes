@@ -1,0 +1,12 @@
+# Declare the default behavior of git to handle line endings
+* text=auto
+
+# Explicitly set line endings for specific file types
+*.cs text eol=crlf
+*.ts text eol=crlf
+*.html text eol=crlf
+*.scss text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.http text eol=crlf
+*.txt text eol=crlf
