@@ -5,7 +5,7 @@
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-center mb-0">
             <h2 class="h4 mb-0 fw-bold">{{ 'product-list.title' | translate }}</h2>
-            <button class="btn btn-sm btn-outline-primary" (click)="loadProducts()">
+            <button class="btn btn-sm btn-outline-primary" (click)="listService.loadProducts()">
               {{ 'product-list.refresh' | translate }}
             </button>
           </div>
@@ -13,24 +13,24 @@
       </div>
 
       <app-pagination 
-        [pageNumber]="paginationListService.pageNumber()" 
-        [totalPages]="paginationListService.totalPages()" 
-        [totalCount]="paginationListService.totalCount()"
-        [pageSize]="paginationListService.pageSize()"
-        (pageChange)="loadProducts($event)"
-        (pageSizeChange)="onPageSizeChange($event)">
+        [pageNumber]="listService.paginationListService.pageNumber()" 
+        [totalPages]="listService.paginationListService.totalPages()" 
+        [totalCount]="listService.paginationListService.totalCount()"
+        [pageSize]="listService.paginationListService.pageSize()"
+        (pageChange)="listService.loadProducts($event)"
+        (pageSizeChange)="listService.onPageSizeChange($event)">
       </app-pagination>
       
       <div class="position-relative mt-4" style="min-height: 200px;">
-        @if (loaderService.isLoading()) {
+        @if (listService.loaderService.isLoading()) {
           <div class="d-flex justify-content-center py-5">
             <div class="spinner-border text-primary"></div>
           </div>
-        } @else if (paginationListService.items().length === 0) {
+        } @else if (listService.paginationListService.items().length === 0) {
           <div class="alert alert-info border-0 shadow-sm">{{ 'product-list.empty' | translate }}</div>
         } @else {
           <div class="product-list">
-            @for (product of paginationListService.items(); track product.id) {
+            @for (product of listService.paginationListService.items(); track product.id) {
               <app-product-list-item [product]="product"></app-product-list-item>
             }
           </div>
@@ -40,7 +40,7 @@
 
     <div class="col-lg-4 order-1 order-lg-2">
       <div class="sticky-top" style="top: 1.5rem;">
-        <app-product-form (productAdded)="loadProducts()"></app-product-form>
+        <app-product-form (productAdded)="listService.loadProducts()"></app-product-form>
       </div>
     </div>
   </div>
